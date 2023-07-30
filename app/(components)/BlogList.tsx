@@ -12,7 +12,7 @@ const BlogList = async () => {
   return (
     <div>
       BlogList
-      {blogs.map((blog: any) => (
+      {blogs.map((blog) => (
         <div key={blog.id}>
           <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
           <p>{blog.publishedAt}</p>

@@ -4,6 +4,7 @@ import {
   MICROCMS_CATEGORIES_ENDPOINT,
   MICROCMS_SERVICE_DOMAIN,
 } from "@/config";
+import { BlogPost } from "@/types/microcms";
 import { createClient } from "microcms-js-sdk";
 
 export const client = createClient({
@@ -16,7 +17,7 @@ const getContents = async (endpoint: string) => {
   return response.contents;
 };
 
-export const getBlogList = async () => {
+export const getBlogList = async (): Promise<BlogPost[]> => {
   const blogs = await getContents(MICROCMS_BLOGS_ENDPOINT);
   return blogs;
 };
@@ -26,7 +27,7 @@ export const getCategoryList = async () => {
   return categories;
 };
 
-export async function getBlogBySlug(slug: string): Promise<any> {
+export async function getBlogBySlug(slug: string): Promise<BlogPost> {
   try {
     const blogs = await client.get({
       endpoint: MICROCMS_BLOGS_ENDPOINT,
@@ -34,7 +35,7 @@ export async function getBlogBySlug(slug: string): Promise<any> {
     });
     return blogs.contents[0];
   } catch (error) {
-    console.error("ブログの取得に失敗しました。", error);
-    return null;
+    console.error("指定のブログの取得に失敗しました。", error);
+    throw error;
   }
 }
