@@ -14,7 +14,7 @@ type Props = {
 export async function generateStaticParams() {
   const posts = await getBlogList();
   return posts.map((post) => ({
-    slug: post.slug,
+    slug: post.slug || post.id,
   }));
 }
 export const dynamicParams = true;
