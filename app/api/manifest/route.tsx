@@ -1,7 +1,8 @@
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/config";
 import { NextResponse } from "next/server";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
+export const dynamic = false;
 
 const manifest = {
   name: SITE_TITLE,
