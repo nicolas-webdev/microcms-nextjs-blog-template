@@ -11,15 +11,17 @@ type Props = {
   params: { slug: string };
 };
 
-// ２４時間ごとに更新するISR
+// 指定時間に更新するISR
 export async function generateStaticParams() {
   const posts = await getBlogList();
   return posts.map((post) => ({
     slug: post.slug || post.id,
   }));
 }
+
 export const dynamicParams = true;
 export const revalidate = REVALIDATE_INTERVAL;
+export const runtime = "nodejs";
 
 // ブログの取得をキャッシュする
 const getBlog = cache(async (slug: string) => {
