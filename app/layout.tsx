@@ -7,10 +7,7 @@ import { Inter } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/config";
 const inter = Inter({ subsets: ["latin"] });
 
-const metadataBaseUrl =
-  SITE_URL || process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : `http://localhost:${process.env.PORT || 3000}`;
+const metadataBaseUrl = SITE_URL;
 
 export const metadata: Metadata = {
   title: SITE_TITLE,
