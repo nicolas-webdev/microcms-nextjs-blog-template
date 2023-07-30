@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   metadataBase: new URL(metadataBaseUrl),
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "cyan" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  manifest: `${metadataBaseUrl}/manifest.json`,
 };
 
 export default function RootLayout({
