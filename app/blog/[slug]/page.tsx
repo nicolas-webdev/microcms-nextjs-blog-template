@@ -5,7 +5,12 @@ import PostBody from "@/app/(components)/PostBody";
 import { getBlogBySlug, getBlogList } from "@/lib/microcms";
 import { cache } from "react";
 import { formatDateJP } from "@/lib/utils";
-import { REVALIDATE_INTERVAL, SITE_URL } from "@/config";
+import {
+  REVALIDATE_INTERVAL,
+  SITE_AUTHOR,
+  SITE_AUTHOR_TWITTER,
+  SITE_URL,
+} from "@/config";
 
 type Props = {
   params: { slug: string };
@@ -84,14 +89,32 @@ export async function generateMetadata(
     return {
       title: blog.title,
       description: blog.description,
+      category: blog.category?.name,
       openGraph: {
+        type: "article",
+        title: blog.title,
+        description: blog.description,
+        publishedTime: blog.publishedAt,
+        authors: [SITE_AUTHOR],
+        url: `${SITE_URL}/blog/${blog.slug}`,
         images: [
           blog.eyecatch?.url ??
             `${SITE_URL}/api/og?title=${
               blog.title || "Next.js + MicroCMSブログ"
             }`,
-          "https://placehold.jp/30/dd6699/ffffff/300x150.png?text=placeholder+image",
           ...previousImages,
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: blog.title,
+        description: blog.description,
+        creator: SITE_AUTHOR_TWITTER,
+        images: [
+          blog.eyecatch?.url ??
+            `${SITE_URL}/api/og?title=${
+              blog.title || "Next.js + MicroCMSブログ"
+            }`,
         ],
       },
     };

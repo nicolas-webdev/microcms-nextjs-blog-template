@@ -10,6 +10,11 @@ export const SITE_TITLE = process.env.SITE_TITLE || "MicroNext";
 export const SITE_DESCRIPTION =
   process.env.SITE_DESCRIPTION ||
   "APPルーター、ISR対応のmicroCMS＆Next.jsのブログテンプレート";
+export const SITE_AUTHOR = process.env.SITE_AUTHOR || "Nicolas";
+export const SITE_AUTHOR_TWITTER = process.env.SITE_AUTHOR_TWITTER || "@_xkime";
+export const SITE_AUTHOR_URL =
+  process.env.SITE_AUTHOR_URL || "https://twitter.com/_xkime";
+export const SITE_IMAGE = process.env.SITE_IMAGE || "/api/og?title=MicroNext";
 
 // MicroCMS関連
 export const MICROCMS_SERVICE_DOMAIN =
