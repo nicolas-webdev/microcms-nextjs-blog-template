@@ -5,12 +5,7 @@ import { getBlogBySlug, getBlogList } from "@/lib/microcms";
 import { cache } from "react";
 
 const getFeaturedBlog = cache(async (slug?: string) => {
-  if (slug) {
-    const response = await getBlogBySlug(slug);
-    return response;
-  }
-  const response = await getBlogList();
-  return response[0];
+  return slug ? await getBlogBySlug(slug) : (await getBlogList())[0];
 });
 
 export default async function Home() {
