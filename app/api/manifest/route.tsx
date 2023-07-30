@@ -2,7 +2,7 @@ import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@/config";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
-export const dynamic = false;
+export const dynamic = "force-static";
 
 const manifest = {
   name: SITE_TITLE,
