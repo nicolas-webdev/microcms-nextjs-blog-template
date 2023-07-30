@@ -1,5 +1,8 @@
 // URL関連
-export const SITE_URL = process.env.SITE_URL || "http://localhost:3000";
+export const SITE_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.SITE_URL || ""
+    : process.env.VERCEL_URL || "http://localhost:3000";
 export const SITE_HOSTNAME = process.env.SITE_HOSTNAME || "example.com";
 
 // メタデータ関連
