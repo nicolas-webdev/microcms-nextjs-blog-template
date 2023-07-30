@@ -2,7 +2,7 @@ import { BlogPost } from "@/types/microcms";
 import Image from "next/image";
 import Placeholder from "@/public/img/placeholder.webp";
 import Link from "next/link";
-import { formatDateJP } from "@/lib/utils";
+import { formatDateJP, generateBlogDescription } from "@/lib/utils";
 
 type FeaturedBlogProps = {
   blog: BlogPost;
@@ -35,7 +35,7 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28 dark:invert">
         <div>
-          <h3 className="mb-4 font-bold text-4xl lg:text-6xl leading-[1.35] lg:leading-[1.2]">
+          <h3 className="mb-4 font-semibold text-4xl lg:text-5xl leading-[1.35] lg:leading-[1.2]">
             <Link className="hover:underline" href={`/blog/${blog.slug}`}>
               {blog.title || "フィーチャーブログ"}
             </Link>
@@ -44,9 +44,7 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
         <div>
           <p className="text-lg leading-relaxed mb-4">
             {blog.description ||
-              blog.content
-                ?.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "")
-                .slice(0, 255) + "..." ||
+              (blog.content && generateBlogDescription(blog.content)) ||
               ""}
           </p>
           <div className="mt-2 text-lg">

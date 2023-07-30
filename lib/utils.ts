@@ -5,3 +5,8 @@ export const formatDateJP = (date: string) => {
     day: "numeric",
   });
 };
+
+export const generateBlogDescription = (content: string) => {
+  const contentWithoutTag = content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
+  return contentWithoutTag.slice(0, 100) + "...";
+};
