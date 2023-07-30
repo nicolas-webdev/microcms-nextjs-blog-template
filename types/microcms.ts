@@ -8,6 +8,7 @@ export type BlogPost = {
   revisedAt: string;
   slug?: string;
   title?: string;
+  description?: string;
   content?: string;
   eyecatch?: {
     url: string;
