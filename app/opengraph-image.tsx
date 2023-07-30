@@ -13,14 +13,8 @@ export const size = {
 
 export const contentType = "image/png";
 
-// Font
-const NotoSansJP = fetch(
-  new URL("/assets/NotoSansJP-Bold.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
-
 // Image generation
 export default async function Image() {
-  const fontData = await NotoSansJP;
   return new ImageResponse(
     (
       // ImageResponse JSX element
@@ -43,13 +37,6 @@ export default async function Image() {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-      fonts: [
-        {
-          name: "NotoSansJP",
-          data: fontData,
-          style: "normal",
-        },
-      ],
     }
   );
 }
