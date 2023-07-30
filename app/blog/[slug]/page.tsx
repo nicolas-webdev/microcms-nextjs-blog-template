@@ -5,7 +5,7 @@ import PostBody from "@/app/(components)/PostBody";
 import { getBlogBySlug, getBlogList } from "@/lib/microcms";
 import { cache } from "react";
 import { formatDateJP } from "@/lib/utils";
-import { REVALIDATE_INTERVAL } from "@/config";
+import { REVALIDATE_INTERVAL, SITE_URL } from "@/config";
 
 type Props = {
   params: { slug: string };
@@ -87,7 +87,10 @@ export async function generateMetadata(
       openGraph: {
         images: [
           blog.eyecatch?.url ??
-            "https://placehold.jp/30/dd6699/ffffff/300x150.png?text=placeholder+image",
+            `${SITE_URL}/api/og?title=${
+              blog.title || "Next.js + MicroCMSブログ"
+            }`,
+          "https://placehold.jp/30/dd6699/ffffff/300x150.png?text=placeholder+image",
           ...previousImages,
         ],
       },
