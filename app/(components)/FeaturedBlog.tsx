@@ -34,7 +34,7 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28 dark:invert">
         <div>
-          <h3 className="mb-4 font-bold text-4xl lg:text-6xl leading-tight">
+          <h3 className="mb-4 font-bold text-4xl lg:text-6xl leading-tight lg:leading-snug">
             <Link className="hover:underline" href={`/blog/${blog.slug}`}>
               {blog.title || "フィーチャーブログ"}
             </Link>
