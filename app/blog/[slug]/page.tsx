@@ -24,13 +24,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <main>
       My Post: {params.slug}
       <h1>{blog.title}</h1>
-      <article className="prose prose-slate lg:prose-xl dark:prose-invert prose-img:rounded-sm prose-headings:underline prose-a:text-blue-600">
-        <PostBody
-          htmlContent={
-            blog.content || `<div>ブログ内容の読み込みに失敗しました</div>`
-          }
-        />
-      </article>
+      <PostBody
+        htmlContent={
+          blog.content || `<div>ブログ内容の読み込みに失敗しました</div>`
+        }
+      />
     </main>
   );
 }
