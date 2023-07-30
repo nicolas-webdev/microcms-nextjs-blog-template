@@ -1,13 +1,13 @@
 import { getBlogBySlug, getBlogList } from "@/lib/microcms";
 import { cache } from "react";
 
+// ２４時間ごとに更新でISR
 export async function generateStaticParams() {
   const posts = await getBlogList();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
-
 export const dynamicParams = true;
 export const revalidate = 86400;
 
