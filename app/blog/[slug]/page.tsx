@@ -46,6 +46,7 @@ export default async function Page({ params }: Props) {
         <div className="mb-8 md:mb-16 sm:mx-0">
           <div className="sm:mx-0">
             <Image
+              priority
               alt={blog.title || ""}
               src={blog.eyecatch?.url || Placeholder}
               width={1920}
