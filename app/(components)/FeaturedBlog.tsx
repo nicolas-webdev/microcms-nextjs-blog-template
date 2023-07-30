@@ -47,7 +47,7 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
               (blog.content && generateBlogDescription(blog.content)) ||
               ""}
           </p>
-          <div className="mt-2 text-lg">
+          <div className="mt-2 text-md">
             <time dateTime={blog.publishedAt}>
               {formatDateJP(blog.publishedAt)}
               に投稿
