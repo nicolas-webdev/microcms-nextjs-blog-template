@@ -25,3 +25,16 @@ export const getCategoryList = async () => {
   const categories = await getContents(MICROCMS_CATEGORIES_ENDPOINT);
   return categories;
 };
+
+export async function getBlogBySlug(slug: string): Promise<any> {
+  try {
+    const blogs = await client.get({
+      endpoint: MICROCMS_BLOGS_ENDPOINT,
+      queries: { filters: `slug[equals]${slug}` },
+    });
+    return blogs.contents[0];
+  } catch (error) {
+    console.error("ブログの取得に失敗しました。", error);
+    return null;
+  }
+}

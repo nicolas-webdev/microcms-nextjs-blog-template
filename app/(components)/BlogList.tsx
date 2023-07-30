@@ -1,4 +1,5 @@
 import { getBlogList } from "@/lib/microcms";
+import Link from "next/link";
 import { cache } from "react";
 
 const getBlogs = cache(async () => {
@@ -13,7 +14,7 @@ const BlogList = async () => {
       BlogList
       {blogs.map((blog: any) => (
         <div key={blog.id}>
-          <h2>{blog.title}</h2>
+          <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
           <p>{blog.publishedAt}</p>
         </div>
       ))}
