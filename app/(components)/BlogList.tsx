@@ -11,7 +11,6 @@ const getBlogs = cache(async () => {
 
 const BlogList = async () => {
   const blogs = await getBlogs();
-  console.log(blogs);
   return (
     <section>
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight dark:invert">
