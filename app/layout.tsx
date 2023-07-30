@@ -39,7 +39,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(metadataBaseUrl),
   applicationName: SITE_TITLE,
   manifest: `${metadataBaseUrl}/api/manifest`,
-  colorScheme: "dark",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "cyan" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
