@@ -94,9 +94,9 @@ const PostBody = ({ htmlContent }: PostBodyProps) => {
   const parsedHtmlContents = parseHTML(htmlContent);
   // TailwindCSSのproseプラグインを使用してブログコンテンツをスタイル付け
   return (
-    <article className="prose prose-slate lg:prose-xl dark:prose-invert prose-img:rounded-sm prose-headings:underline prose-a:text-blue-600">
+    <main className="container mx-auto px-5 prose prose-slate lg:prose-xl dark:prose-invert prose-img:rounded-sm prose-a:text-blue-600">
       {parsedHtmlContents}
-    </article>
+    </main>
   );
 };
 
