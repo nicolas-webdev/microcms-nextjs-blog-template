@@ -38,6 +38,18 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost> {
       endpoint: MICROCMS_BLOGS_ENDPOINT,
       queries: { filters: `slug[equals]${slug}` },
     });
+    if (blogs.contents.length === 0) {
+      try {
+        const blog = await client.get({
+          endpoint: MICROCMS_BLOGS_ENDPOINT,
+          contentId: slug,
+        });
+        return blog;
+      } catch (error) {
+        console.error("指定のブログの取得に失敗しました。", error);
+        throw error;
+      }
+    }
     return blogs.contents[0];
   } catch (error) {
     console.error("指定のブログの取得に失敗しました。", error);
