@@ -12,43 +12,51 @@ import {
 } from "@/types/microcms";
 import { createClient } from "microcms-js-sdk";
 
+// microCMSのクライアントを生成
+// serviceDomainとapiKeyは環境変数から取得
 export const client = createClient({
   serviceDomain: MICROCMS_SERVICE_DOMAIN,
   apiKey: MICROCMS_API_KEY,
 });
 
+// エンドポイントからコンテンツを取得する関数
 const getContents = async (endpoint: string) => {
-  const response = await client.get({ endpoint });
-  return response.contents;
+  try {
+    const response = await client.get({ endpoint });
+    return response.contents;
+  } catch (error) {
+    console.error(
+      `エンドポイント${endpoint}からのデータ取得に失敗しました。`,
+      error
+    );
+    throw error;
+  }
 };
 
+// ブログ一覧を取得
 export const getBlogList = async (): Promise<BlogPostList> => {
-  const blogs = await getContents(MICROCMS_BLOGS_ENDPOINT);
-  return blogs;
+  return getContents(MICROCMS_BLOGS_ENDPOINT);
 };
 
+// カテゴリ一覧を取得
 export const getCategoryList = async (): Promise<CategoryList> => {
-  const categories = await getContents(MICROCMS_CATEGORIES_ENDPOINT);
-  return categories;
+  return getContents(MICROCMS_CATEGORIES_ENDPOINT);
 };
 
+// スラッグにより特定のブログを取得
 export async function getBlogBySlug(slug: string): Promise<BlogPost> {
   try {
     const blogs = await client.get({
       endpoint: MICROCMS_BLOGS_ENDPOINT,
       queries: { filters: `slug[equals]${slug}` },
     });
+    // ブログが見つからない場合、contentIdを使用して再試行
     if (blogs.contents.length === 0) {
-      try {
-        const blog = await client.get({
-          endpoint: MICROCMS_BLOGS_ENDPOINT,
-          contentId: slug,
-        });
-        return blog;
-      } catch (error) {
-        console.error("指定のブログの取得に失敗しました。", error);
-        throw error;
-      }
+      const blog = await client.get({
+        endpoint: MICROCMS_BLOGS_ENDPOINT,
+        contentId: slug,
+      });
+      return blog;
     }
     return blogs.contents[0];
   } catch (error) {
@@ -57,6 +65,7 @@ export async function getBlogBySlug(slug: string): Promise<BlogPost> {
   }
 }
 
+// 名前により特定のカテゴリを取得
 export async function getCategoryByName(name: string): Promise<Category> {
   try {
     const categories = await client.get({
@@ -70,6 +79,7 @@ export async function getCategoryByName(name: string): Promise<Category> {
   }
 }
 
+// カテゴリ名によりブログ一覧を取得
 export async function getBlogListByCategoryName(
   name: string
 ): Promise<BlogPostList> {
