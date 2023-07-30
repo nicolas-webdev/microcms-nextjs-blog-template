@@ -1,3 +1,4 @@
+import PostBody from "@/app/(components)/PostBody";
 import { getBlogBySlug, getBlogList } from "@/lib/microcms";
 import { cache } from "react";
 
@@ -23,12 +24,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <main>
       My Post: {params.slug}
       <h1>{blog.title}</h1>
-      <article
-        className="prose prose-slate lg:prose-xl dark:prose-invert prose-img:rounded-xl prose-headings:underline prose-a:text-blue-600"
-        dangerouslySetInnerHTML={{
-          __html: `${blog.content}` || "<div>エラーが発生しました</div>",
-        }}
-      ></article>
+      <article className="prose prose-slate lg:prose-xl dark:prose-invert prose-img:rounded-sm prose-headings:underline prose-a:text-blue-600">
+        <PostBody
+          htmlContent={
+            blog.content || `<div>ブログ内容の読み込みに失敗しました</div>`
+          }
+        />
+      </article>
     </main>
   );
 }
