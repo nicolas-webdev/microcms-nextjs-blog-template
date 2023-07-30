@@ -5,6 +5,7 @@ import PostBody from "@/app/(components)/PostBody";
 import { getBlogBySlug, getBlogList } from "@/lib/microcms";
 import { cache } from "react";
 import { formatDateJP } from "@/lib/utils";
+import { REVALIDATE_INTERVAL } from "@/config";
 
 type Props = {
   params: { slug: string };
@@ -18,7 +19,7 @@ export async function generateStaticParams() {
   }));
 }
 export const dynamicParams = true;
-export const revalidate = 86400;
+export const revalidate = REVALIDATE_INTERVAL;
 
 // ブログの取得をキャッシュする
 const getBlog = cache(async (slug: string) => {

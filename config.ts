@@ -16,3 +16,8 @@ export const MICROCMS_BLOGS_ENDPOINT =
   process.env.MICROCMS_BLOGS_ENDPOINT || "blogs";
 export const MICROCMS_CATEGORIES_ENDPOINT =
   process.env.MICROCMS_CATEGORIES_ENDPOINT || "categories";
+
+// ISR関連
+export const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET || "secret";
+export const REVALIDATE_INTERVAL =
+  Number(process.env.REVALIDATE_INTERVAL) || 86400;
