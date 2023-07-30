@@ -89,7 +89,7 @@ export async function generateMetadata(
     return {
       title: blog.title,
       description: blog.description,
-      category: blog.category?.name,
+      category: blog.category?.name || "ブログ",
       openGraph: {
         type: "article",
         title: blog.title,
@@ -97,25 +97,14 @@ export async function generateMetadata(
         publishedTime: blog.publishedAt,
         authors: [SITE_AUTHOR],
         url: `${SITE_URL}/blog/${blog.slug}`,
-        images: [
-          blog.eyecatch?.url ??
-            `${SITE_URL}/api/og?title=${
-              blog.title || "Next.js + MicroCMSブログ"
-            }`,
-          ...previousImages,
-        ],
+        images: blog.eyecatch?.url ? [blog.eyecatch.url] : [...previousImages],
       },
       twitter: {
         card: "summary_large_image",
         title: blog.title,
         description: blog.description,
         creator: SITE_AUTHOR_TWITTER,
-        images: [
-          blog.eyecatch?.url ??
-            `${SITE_URL}/api/og?title=${
-              blog.title || "Next.js + MicroCMSブログ"
-            }`,
-        ],
+        images: blog.eyecatch?.url ? [blog.eyecatch.url] : [...previousImages],
       },
     };
   } catch (error) {
