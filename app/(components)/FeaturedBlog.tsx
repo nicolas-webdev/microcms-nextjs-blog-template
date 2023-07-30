@@ -12,7 +12,7 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
   return (
     <section>
       <div className="mb-8 md:mb-16">
-        <div className="sm:mx-0  shadow-sm hover:shadow-lg transition-shadow duration-200">
+        <div className="sm:mx-0 shadow-sm hover:shadow-lg transition-shadow duration-200">
           <Link
             aria-label={blog.title || "フィーチャーブログへ"}
             href={`/blog/${blog.slug}`}
@@ -25,16 +25,16 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
                 src={blog.eyecatch?.url || Placeholder}
                 height={blog.eyecatch?.height}
                 width={blog.eyecatch?.width}
-                className="block absolute inset-0 m-auto max-w-full min-w-full object-cover"
+                className="block absolute inset-0 m-auto max-w-full min-w-full object-cover dark:rounded-md"
                 sizes="100vw"
               />
             </span>
           </Link>
         </div>
       </div>
-      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
+      <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28 dark:invert">
         <div>
-          <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
+          <h3 className="mb-4 font-bold text-4xl lg:text-6xl leading-tight">
             <Link className="hover:underline" href={`/blog/${blog.slug}`}>
               {blog.title || "フィーチャーブログ"}
             </Link>
