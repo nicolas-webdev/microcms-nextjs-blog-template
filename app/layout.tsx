@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: light)", color: "cyan" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
-  manifest: `${metadataBaseUrl}/manifest.json`,
+  manifest: `${metadataBaseUrl}/api/manifest`,
 };
 
 export default function RootLayout({
