@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   console.log(blog);
   return (
     <article className="container mx-auto px-5 my-32">
-      <h1 className="dark:invert text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight lg:leading-snug md:leading-none mb-12 text-center md:text-left">
+      <h1 className="dark:invert text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-12 text-center md:text-left">
         {blog.title}
       </h1>
       <div className="mb-8 md:mb-16 sm:mx-0">
