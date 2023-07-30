@@ -40,12 +40,6 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
               {blog.title || "フィーチャーブログ"}
             </Link>
           </h3>
-          <div className="mb-4 md:mb-0 text-lg">
-            <time dateTime={blog.publishedAt}>
-              {formatDateJP(blog.publishedAt)}
-              に投稿
-            </time>
-          </div>
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">
@@ -55,6 +49,12 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
                 .slice(0, 255) + "..." ||
               ""}
           </p>
+          <div className="mt-2 text-lg">
+            <time dateTime={blog.publishedAt}>
+              {formatDateJP(blog.publishedAt)}
+              に投稿
+            </time>
+          </div>
         </div>
       </div>
     </section>

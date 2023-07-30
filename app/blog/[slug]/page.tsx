@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const blog = await getBlog(params.slug);
   console.log(blog);
   return (
-    <article className="container mx-auto px-5 my-32">
+    <article className="container mx-auto px-5 mb-32">
       <h1 className="dark:invert text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight mb-12 text-center md:text-left">
         {blog.title}
       </h1>
