@@ -23,7 +23,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
     <main>
       My Post: {params.slug}
       <h1>{blog.title}</h1>
-      <article>{blog.content}</article>
+      <article
+        className="prose prose-slate lg:prose-xl dark:prose-invert prose-img:rounded-xl prose-headings:underline prose-a:text-blue-600"
+        dangerouslySetInnerHTML={{
+          __html: `${blog.content}` || "<div>エラーが発生しました</div>",
+        }}
+      ></article>
     </main>
   );
 }
