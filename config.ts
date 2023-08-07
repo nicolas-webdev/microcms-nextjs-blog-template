@@ -29,3 +29,6 @@ export const MICROCMS_CATEGORIES_ENDPOINT =
 export const REVALIDATE_SECRET = process.env.REVALIDATE_SECRET || "secret";
 export const REVALIDATE_INTERVAL =
   Number(process.env.REVALIDATE_INTERVAL) || 86400;
+
+// DRAFT関連
+export const DRAFT_SECRET = process.env.DRAFT_SECRET || "draft";
