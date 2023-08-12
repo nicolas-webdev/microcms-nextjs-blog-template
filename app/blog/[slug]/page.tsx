@@ -24,9 +24,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export const dynamicParams = true;
-export const revalidate = REVALIDATE_INTERVAL;
 export const runtime = "nodejs";
+export const revalidate = REVALIDATE_INTERVAL;
+export const dynamicParams = true;
 
 // ブログの取得をキャッシュする
 const getBlog = cache(async (slug: string) => {

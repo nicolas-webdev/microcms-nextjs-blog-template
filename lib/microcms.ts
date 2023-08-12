@@ -95,3 +95,26 @@ export async function getBlogListByCategoryName(
     throw error;
   }
 }
+
+// プレビュー用のブログを取得
+export const getPreviewBlog = async (id: string, draftKey: string) => {
+  try {
+    const response = await fetch(
+      ` https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/${MICROCMS_BLOGS_ENDPOINT}/${id}?draftKey=${draftKey}`,
+      {
+        headers: {
+          "X-MICROCMS-API-KEY": MICROCMS_API_KEY || "",
+        },
+        cache: "no-store",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("ブログの取得に失敗しました。");
+    }
+    const blog: BlogPost = await response.json();
+    return blog;
+  } catch (error) {
+    console.error("ブログの取得に失敗しました。", error);
+    throw error;
+  }
+};
