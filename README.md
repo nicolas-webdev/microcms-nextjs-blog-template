@@ -1,5 +1,7 @@
 # Next.js 13 と microCMS を組み合わせたブログプロジェクト
 
+![プロジェクト](https://i.ibb.co/P5VNSL2/Clean-Shot-2023-08-12-at-20-20-25-2x.png)
+
 このプロジェクトは、Next.js 13 と microCMS を組み合わせた、高速で効率的なブログサイト構築のためのテンプレートです。Lighthouse のスコアは満点を獲得しており、ウェブアプリとしても拡張が可能です。
 
 このプロジェクトは [Next.js](https://nextjs.org/) を使用して create-next-app でブートストラップされています。
@@ -50,15 +52,19 @@ Next.js アプリをデプロイする最も簡単な方法は、Next.js のク�
 
 このプロジェクトは Lighthouse でのスコアが満点を達成しています。
 
+![Lighthouse](https://i.ibb.co/Hz71nFQ/Clean-Shot-2023-08-12-at-20-29-05-2x.png)
+
 ### Next.js 13 の新機能
 
 このプロジェクトは Next.js 13 の最新の機能を活用しています：
 
 - React 18
-  -- Suspense
-  -- React Server Components (RSC)
+- Suspense
+- React Server Components (RSC)
+- Draft Mode
+- SEO メタデータ
 - キャッシュ機能
 - 様々なフェッチモード（ダイナミックとスタティック）
-- フォントの最適化
+- フォント最適化
 - ルートハンドラ（OG 画像作成、ダイナミックなマニフェスト）
 - その他多数
