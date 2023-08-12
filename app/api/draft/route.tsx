@@ -4,22 +4,24 @@ import { redirect } from "next/navigation";
 import { getBlogBySlug } from "@/lib/microcms";
 import { DRAFT_SECRET } from "@/config";
 
+const path = "blog";
+
 export async function GET(request: Request) {
   // クエリーパラメーターを取得
   const { searchParams } = new URL(request.url);
-  const [secret, slug, path] = [
+  const [id, draftKey, secret] = [
+    searchParams.get("id"), // microCMSのCONTENT_IDを取得
+    searchParams.get("draftKey"), // microCMSのdraftKeyを取得
     searchParams.get("secret"),
-    searchParams.get("slug"),
-    searchParams.get("path"),
   ];
 
   //  クエリーパラメーターが不正な場合はエラー
-  if (!secret || secret !== DRAFT_SECRET || !slug || !path) {
+  if (!secret || secret !== DRAFT_SECRET || !id || !draftKey) {
     return new Response("不正なクエリーパラメーター", { status: 400 });
   }
 
   // ブログ記事を取得
-  const blog = await getBlogBySlug(slug);
+  const blog = await getBlogBySlug(id);
 
   // 記事が存在しない場合はエラー
   if (!blog) {
