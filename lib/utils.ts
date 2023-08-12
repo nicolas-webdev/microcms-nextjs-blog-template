@@ -1,4 +1,6 @@
-// 日付のフォーマット
+// ユーティリティ関数とスタイルを定義
+
+// 日付を日本のフォーマットに変換
 export const formatDateJP = (date: string) => {
   return new Date(date).toLocaleDateString("ja-JP", {
     year: "numeric",
@@ -7,14 +9,14 @@ export const formatDateJP = (date: string) => {
   });
 };
 
-// ブログのディスクリプションを生成
+// HTMLタグを除去し、ブログの説明文を生成
 export const generateBlogDescription = (content: string) => {
   const contentWithoutTag = content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, "");
-  return contentWithoutTag.slice(0, 100) + "...";
+  return `${contentWithoutTag.slice(0, 100)}...`;
 };
 
-// 画像のスタイリング
-export const baseStyle = {
+// ベーススタイル
+const baseStyle = {
   width: "100%",
   height: "100%",
   display: "flex",
@@ -22,6 +24,7 @@ export const baseStyle = {
   justifyContent: "center",
 };
 
+// faviconのスタイル
 export const faviconStyle = {
   ...baseStyle,
   fontSize: 24,
@@ -30,6 +33,7 @@ export const faviconStyle = {
   borderRadius: "100%",
 };
 
+// 通常のアイコンスタイル
 export const iconStyle = {
   ...baseStyle,
   fontSize: 24,
@@ -37,24 +41,20 @@ export const iconStyle = {
   color: "white",
 };
 
+// OpenGraphのアイコンスタイル
 export const opengraphStyle = {
   ...baseStyle,
   fontSize: 128,
   background: "white",
 };
 
-export function generateIconStyle(dimensions: {
+// アイコンスタイルを動的に生成
+export const generateIconStyle = (dimensions: {
   width: number;
   height: number;
-}) {
-  return {
-    fontSize: dimensions.width / 1.5,
-    background: "black",
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: "white",
-  };
-}
+}) => ({
+  ...baseStyle,
+  fontSize: dimensions.width / 1.5,
+  background: "black",
+  color: "white",
+});
