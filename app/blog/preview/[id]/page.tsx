@@ -4,7 +4,7 @@ import PostBody from "@/app/(components)/PostBody";
 import { formatDateJP } from "@/lib/utils";
 import { getPreviewBlog } from "@/lib/microcms";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 type Props = {
   params: { id: string };
