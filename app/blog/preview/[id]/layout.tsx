@@ -1,11 +1,12 @@
 import BlogHeader from "@/app/blog/[slug]/BlogHeader";
+import { draftMode } from "next/headers";
 
 export default function PreviewLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;
 }) {
-  return (
+  return draftMode().isEnabled ? (
     <>
       <header className="min-w-full text-center bg-yellow-400 font-semibold">
         <div className="container mx-auto px-5 py-2">
@@ -23,5 +24,11 @@ export default function PreviewLayout({
       <BlogHeader />
       {children}
     </>
+  ) : (
+    <div>
+      <p>
+        プレビューモードがオフになっています。このページは公開されていません。
+      </p>
+    </div>
   );
 }

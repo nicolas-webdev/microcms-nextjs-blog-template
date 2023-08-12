@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { DRAFT_SECRET } from "@/config";
 
 const path = "blog";
-export const runtime = "edge";
 
 export async function GET(request: Request) {
   // クエリーパラメーターを取得
