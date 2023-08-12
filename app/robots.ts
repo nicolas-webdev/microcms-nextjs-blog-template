@@ -1,3 +1,4 @@
+// robots.txtのメタデータ設定
 import { SITE_URL } from "@/config";
 import { MetadataRoute } from "next";
 

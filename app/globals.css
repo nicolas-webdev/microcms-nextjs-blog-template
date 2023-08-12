@@ -2,16 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ベースのバックグラウンドカラー設定 */
 :root {
   --background-rgb: 255, 255, 255;
 }
 
+/* ダークモード時のバックグラウンドカラー設定 */
 @media (prefers-color-scheme: dark) {
   :root {
     --background-rgb: 10, 10, 10;
   }
 }
 
+/* body要素のバックグラウンドカラー適用 */
 body {
   background-color: rgb(var(--background-rgb));
 }

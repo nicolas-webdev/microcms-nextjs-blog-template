@@ -1,5 +1,10 @@
 import { SITE_URL } from "@/config";
 import { getBlogList } from "@/lib/microcms";
+import { BlogPost } from "@/types/microcms";
+
+// ブログのURLを生成
+const generateBlogUrl = (blog: BlogPost) =>
+  `${SITE_URL}/blog/${blog.slug || blog.id}`;
 
 export default async function sitemap() {
   const lastModified = new Date();
@@ -7,7 +12,7 @@ export default async function sitemap() {
   const blogList = await getBlogList();
   const blogs = blogList.map((blog) => {
     return {
-      url: `${SITE_URL}/blog/${blog.slug || blog.id}`,
+      url: generateBlogUrl(blog),
       lastModified: blog.updatedAt || lastModified,
     };
   });
