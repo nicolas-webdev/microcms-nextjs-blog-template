@@ -3,6 +3,7 @@ import BlogList from "@/app/(components)/BlogList";
 import FeaturedBlog from "@/app/(components)/FeaturedBlog";
 import { REVALIDATE_INTERVAL } from "@/config";
 import { getBlogBySlug, getBlogList } from "@/lib/microcms";
+import SiteHeader from "@/app/(components)/SiteHeader";
 
 const getFeaturedBlog = cache(async (slug?: string) => {
   try {
@@ -23,6 +24,7 @@ export default async function Home() {
 
   return (
     <main className="container mx-auto px-5">
+      <SiteHeader />
       <FeaturedBlog blog={featuredBlog} />
       <BlogList />
     </main>
