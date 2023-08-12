@@ -1,4 +1,4 @@
-// route handler enabling draft mode
+// draftModoを有効にするroute handler
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import { DRAFT_SECRET } from "@/config";
@@ -24,5 +24,5 @@ export async function GET(request: Request) {
   console.log("プレビューモードを有効にしました");
 
   // プレビューで記事へリダイレクト
-  redirect(`/${path}/preview/${id}?draftKey=${draftKey}`);
+  redirect(`/${path}/preview/${id}/${draftKey}`);
 }

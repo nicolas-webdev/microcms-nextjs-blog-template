@@ -7,13 +7,12 @@ import { getPreviewBlog } from "@/lib/microcms";
 export const runtime = "nodejs";
 
 type Props = {
-  params: { id: string };
+  params: { id: string; draftKey: string };
 };
 
 const PreviewPost = async ({ params }: Props) => {
-  const { searchParams } = new URL(location.href);
-  const draftKey = searchParams.get("draftKey") || "";
-  const blog = await getPreviewBlog(params.id, draftKey);
+  const [id, draftKey] = [params.id, params.draftKey];
+  const blog = await getPreviewBlog(id, draftKey);
 
   if (!blog || !draftKey) {
     return <div>不正なクエリーパラメーターです</div>;
