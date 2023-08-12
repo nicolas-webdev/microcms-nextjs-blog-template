@@ -1,4 +1,4 @@
-"use client"; // Error components must be Client Components
+"use client"; // エラーコンポーネントはクライアントサイドでのみレンダリングされる
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -6,10 +6,10 @@ import { useEffect } from "react";
 export default function Error({ error }: { error: Error }) {
   const router = useRouter();
   useEffect(() => {
-    // Log the error to an error reporting service
+    // TODO: エラーをログツールに送信
     console.error(error);
 
-    // Handle the Error
+    // エラーの処理が終わったらトップページに戻る
     router.push("/");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
