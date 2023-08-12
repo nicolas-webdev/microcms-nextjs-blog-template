@@ -5,12 +5,14 @@ import Link from "next/link";
 import { formatDateJP, generateBlogDescription } from "@/lib/utils";
 
 type FeaturedBlogProps = {
-  blog: BlogPost;
+  blog: BlogPost | null;
 };
 
 const FeaturedBlog = (props: FeaturedBlogProps) => {
   const { blog } = props;
-  return (
+  return !blog ? (
+    <></>
+  ) : (
     <section>
       <div className="mb-8 md:mb-16">
         <div className="sm:mx-0 shadow-sm hover:shadow-lg transition-shadow duration-200">

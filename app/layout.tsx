@@ -1,8 +1,6 @@
 import Footer from "@/app/(components)/Footer";
 import "./globals.css";
-import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-
 import { Inter } from "next/font/google";
 import {
   SITE_AUTHOR,
@@ -13,6 +11,7 @@ import {
   SITE_TITLE,
   SITE_URL,
 } from "@/config";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -31,14 +30,12 @@ export default function RootLayout({
   );
 }
 
-const metadataBaseUrl = SITE_URL;
-// https://nextjs.org/docs/app/api-reference/functions/generate-metadata
-export const metadata: Metadata = {
+export const metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
-  metadataBase: new URL(metadataBaseUrl),
+  metadataBase: new URL(SITE_URL),
   applicationName: SITE_TITLE,
-  manifest: `${metadataBaseUrl}/api/manifest`,
+  manifest: `${SITE_URL}/api/manifest`,
   colorScheme: "light",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "cyan" },
