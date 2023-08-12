@@ -1,8 +1,12 @@
 {
   "functions": {
-    "app/api/*": {
+    "app/api/draft/route.ts": {
       "memory": 512,
-      "maxDuration": 15
+      "maxDuration": 10
+    },
+    "app/api/draft/exit/route.ts": {
+      "memory": 512,
+      "maxDuration": 5
     }
   },
   "headers": [
