@@ -42,3 +42,19 @@ export const opengraphStyle = {
   fontSize: 128,
   background: "white",
 };
+
+export function generateIconStyle(dimensions: {
+  width: number;
+  height: number;
+}) {
+  return {
+    fontSize: dimensions.width / 1.5,
+    background: "black",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+  };
+}
