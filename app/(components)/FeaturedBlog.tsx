@@ -8,33 +8,41 @@ type FeaturedBlogProps = {
   blog: BlogPost | null;
 };
 
+// 画像部分のコンポーネント
+const FeaturedBlogImage = ({ blog }: { blog: BlogPost }) => (
+  <div className="mb-8 md:mb-16">
+    <div className="sm:mx-0 shadow-sm hover:shadow-lg transition-shadow duration-200">
+      <Link
+        aria-label={blog.title || "フィーチャーブログへ"}
+        href={`/blog/${blog.slug}`}
+      >
+        <span className="block overflow-hidden relative box-border m-0">
+          <span className="block box-border pt-[50%]"></span>
+          <Image
+            priority
+            alt={blog.title || ""}
+            src={blog.eyecatch?.url || Placeholder}
+            height={blog.eyecatch?.height}
+            width={blog.eyecatch?.width}
+            className="block absolute inset-0 m-auto max-w-full min-w-full object-cover dark:rounded-md"
+            sizes="100vw"
+          />
+        </span>
+      </Link>
+    </div>
+  </div>
+);
+
 const FeaturedBlog = (props: FeaturedBlogProps) => {
   const { blog } = props;
-  return !blog ? (
-    <></>
-  ) : (
+
+  // ブログの情報がない場合、何も描画しない
+  if (!blog) return null;
+
+  return (
     <section>
-      <div className="mb-8 md:mb-16">
-        <div className="sm:mx-0 shadow-sm hover:shadow-lg transition-shadow duration-200">
-          <Link
-            aria-label={blog.title || "フィーチャーブログへ"}
-            href={`/blog/${blog.slug}`}
-          >
-            <span className="block overflow-hidden relative box-border m-0">
-              <span className="block box-border pt-[50%]"></span>
-              <Image
-                priority
-                alt={blog.title || ""}
-                src={blog.eyecatch?.url || Placeholder}
-                height={blog.eyecatch?.height}
-                width={blog.eyecatch?.width}
-                className="block absolute inset-0 m-auto max-w-full min-w-full object-cover dark:rounded-md"
-                sizes="100vw"
-              />
-            </span>
-          </Link>
-        </div>
-      </div>
+      <FeaturedBlogImage blog={blog} />
+
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28 dark:invert">
         <div>
           <h2 className="mb-4 font-semibold text-4xl lg:text-5xl leading-[1.35] lg:leading-[1.2]">
@@ -51,8 +59,7 @@ const FeaturedBlog = (props: FeaturedBlogProps) => {
           </p>
           <div className="mt-2 text-md">
             <time dateTime={blog.publishedAt}>
-              {formatDateJP(blog.publishedAt)}
-              に投稿
+              {formatDateJP(blog.publishedAt)}に投稿
             </time>
           </div>
         </div>
